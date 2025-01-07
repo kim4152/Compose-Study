@@ -35,6 +35,8 @@ kotlinOptions {
 
 ---
 
+
+
 ## Stable과 Unstable
 
 컴포즈는 컴포저블 매개변수의 안정성을 사용하여 컴포저블이 리컴포지션 중에 컴포저블을 건너뛸 수 있다.
@@ -48,9 +50,9 @@ kotlinOptions {
 
 ## 안정성 문제 해결
 
-### 강력한 건너뛰기 사용
+### 1. 강력한 건너뛰기 사용
 
-### 불변 컬렉션
+### 2. 불변 컬렉션
 
 Compose 컴파일러는 List, Map 및 Set와 같은 컬렉션이 실제로 불변인지 완전히 확신할 수 없으므로 불안정 처리를한다.    
 안드로이드
@@ -73,6 +75,9 @@ PersistentCollection은 ImmutableCollection을 구현하고 있다.
 public interface PersistentCollection<out E> : ImmutableCollection<E>
 public interface PersistentList<out E> : ImmutableList<E>, PersistentCollection<E>
 ```
+
+<img width="995" alt="스크린샷 2025-01-08 오전 12 14 01" src="https://github.com/user-attachments/assets/864f907b-5c8f-4e33-b234-61a511d59779" />
+
 
 #### ImmutableCollection과 PersistentCollection의 차이는 뭘까
 
@@ -107,7 +112,7 @@ public inline fun <T> PersistentList<T>.mutate(mutator: (MutableList<T>) -> Unit
     builder().apply(mutator).build()
 ```
 
-### 어노테이션 사용
+### 3. 어노테이션 사용
 
 ##### @Immutable
 
